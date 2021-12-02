@@ -17,6 +17,19 @@ int main(){
     timeNotation myTime;
     std::cout << "The time is: " << myTime.getHour() 
     << ":" << myTime.getMinute() << ":" << myTime.getSecond()
-    << ": " << myTime.getPeriod() << std::endl;
+    << " " << myTime.getPeriod() << std::endl;
+
+    cout << "Using print function.\n";
+    myTime.print();
+    cout << endl;
+
+
+    int counter = 0;
+    do
+    {
+        myTime.setPeriod();
+        counter++;
+    } while (counter != 3);
+
     return 0;
 }
