@@ -4,7 +4,24 @@ void timeNotation::setTime(){
     //prompts user to set the time
 }
 
-void timeNotation::setHour(){
+void timeNotation::setHour() throw (invalidHr){
+    // prototyping error handling
+    try
+    {
+        short int *tempHour = new short int; // creates dynamic short int
+        cout << "Enter the hour from 1 - 12: ";
+        cin >> *tempHour;
+        if(*tempHour > 12 || *tempHour < 1)
+            throw invalidHr();
+        else
+            HR = *tempHour;
+        delete tempHour;
+    }
+    catch(invalidHr e)
+    {
+        cout << e.what();
+    }
+    
 
 }
 

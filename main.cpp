@@ -9,7 +9,8 @@ Similar conventions for the invalid values of minutes and seconds.
 */
 
 #include <iostream>
-#include "invalidTime.h"
+// I think error handling classes should not be included in main.cpp
+//#include "invalidTime.h" 
 #include "timeNotation.h"
 
 int main(){
@@ -24,12 +25,15 @@ int main(){
     cout << endl;
 
 
-    int counter = 0;
+    /*int counter = 0;
     do
     {
         myTime.setPeriod();
         counter++;
-    } while (counter != 3);
+    } while (counter != 3);*/
+
+    myTime.setHour();
+    myTime.print();
 
     return 0;
 }

@@ -1,3 +1,4 @@
+#include "invalidTime.h"
 #include <string>
 #include <iostream>
 
@@ -16,7 +17,7 @@ public:
     timeNotation(int inputHR, int inputMIN, int inputSEC, string inputPeriod) : 
     HR(inputHR), MIN(inputMIN), SEC(inputSEC), period(inputPeriod) {} // constructor 
     void setTime(); // asks user to set the time
-    void setHour(); // Takes an integer from 1-12 and sets it as the hour
+    void setHour() throw (invalidHr); // Takes an integer from 1-12 and sets it as the hour
     void setMinute(); // Takes an integer from 0-59 and sets it as the minutes
     void setSecond(); // Takes an integer from 0-59 and sets it as the seconds
     void setPeriod(); // Asks user for AM or PM
