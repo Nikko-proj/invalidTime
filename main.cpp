@@ -16,13 +16,13 @@ Similar conventions for the invalid values of minutes and seconds.
 int main(){
 
     timeNotation myTime;
-    std::cout << "The time is: " << myTime.getHour() 
+    /*std::cout << "The time is: " << myTime.getHour() 
     << ":" << myTime.getMinute() << ":" << myTime.getSecond()
     << " " << myTime.getPeriod() << std::endl;
 
     cout << "Using print function.\n";
     myTime.print();
-    cout << endl;
+    cout << endl;*/
 
 
     /*int counter = 0;
@@ -33,6 +33,10 @@ int main(){
     } while (counter != 3);*/
 
     myTime.setHour();
+    myTime.print();
+    myTime.setMinute();
+    myTime.print();
+    myTime.setSecond();
     myTime.print();
 
     return 0;

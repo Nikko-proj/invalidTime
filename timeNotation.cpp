@@ -11,8 +11,14 @@ void timeNotation::setHour() throw (invalidHr){
         short int *tempHour = new short int; // creates dynamic short int
         cout << "Enter the hour from 1 - 12: ";
         cin >> *tempHour;
-        if(*tempHour > 12 || *tempHour < 1)
+        if(*tempHour > 12 || *tempHour < 1 || !*tempHour) // checks for hour range
             throw invalidHr();
+        /*else if(!*tempHour) // checks if user entered an integer value
+        {
+            throw invalidHr("Must enter an integer value!");
+            cin.clear();
+            cin.ignore(100, '\n');
+        }*/
         else
             HR = *tempHour;
         delete tempHour;
@@ -20,16 +26,54 @@ void timeNotation::setHour() throw (invalidHr){
     catch(invalidHr e)
     {
         cout << e.what();
+        cin.clear();
+        cin.ignore(100, '\n');
     }
     
 
 }
 
-void timeNotation::setMinute(){
+void timeNotation::setMinute() throw (invalidMin){
+    // prototyping error handling
+    try
+    {
+        short int *tempMin = new short int;
+        cout << "Enter the minute(s) from 0 - 59: ";
+        cin >> *tempMin;
+        if(*tempMin < 0 || *tempMin > 59 || !*tempMin) 
+            throw invalidMin("Must be from 0 - 59 minutes!\n");
+        else
+            MIN = *tempMin;
+        delete tempMin;
+    }
+    catch(invalidMin e)
+    {
+        std::cerr << e.what() << '\n';
+        cin.clear();
+        cin.ignore(100, '\n');
+    }
+    
 
 }
 
-void timeNotation::setSecond(){
+void timeNotation::setSecond() throw (invalidSec){
+    // prototyping error handling
+    try
+    {
+        short int *tempSec = new short int;
+        cout << "Enter the second(s) from 0 - 59: ";
+        cin >> *tempSec;
+        if(*tempSec < 0 || *tempSec > 59)
+            throw invalidSec("Must be from 0 - 59 seconds!");
+        else
+            SEC = *tempSec;
+        delete tempSec;
+    }
+    catch(invalidSec e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
 
 }
 
@@ -66,6 +110,16 @@ string timeNotation::getPeriod(){
 }
 
 void timeNotation::print(){
-    cout << getHour() << ":" << getMinute() << ":" << getSecond() << " " <<
-    getPeriod() << endl;
+    if(getHour() < 10) //  if less than 10, print out extra 0
+        cout << "0" << getHour() << ":";
+    else
+        cout << getHour() << ":";
+    if(getMinute() < 10) //  if less than 10, print out extra 0
+        cout << "0" << getMinute() << ":";
+    else
+        cout << getMinute() << ":";
+    if(getSecond() < 10) //  if less than 10, print out extra 0
+        cout << "0" << getSecond() << " " << getPeriod() << endl;
+    else
+        cout << getSecond() << " " << getPeriod() << endl;
 }
