@@ -81,12 +81,16 @@ void timeNotation::setPeriod(){
     // prototyping error handling
     try
     {
+        string *tempPeriod = new string;
         cout << "Set AM or PM: ";
-        cin >> this->period;
-        if(period != "AM" || period != "PM")
-            throw period;
+        cin >> *tempPeriod;
+        if(*tempPeriod != "AM" || *tempPeriod != "PM")
+            throw *tempPeriod;
+        else
+            period = *tempPeriod;
+        delete tempPeriod;
     }
-    catch(string e)
+    catch(string *e)
     {
         cout << "Must enter a valid period!\n";
     }
