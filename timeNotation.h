@@ -26,4 +26,5 @@ public:
     int getSecond(); // returns the second
     string getPeriod(); // returns AM or PM
     void print(); //  prints time
+    void print_24(); // prints time in 24 hour format
 };

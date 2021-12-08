@@ -32,12 +32,14 @@ int main(){
         counter++;
     } while (counter != 3);*/
 
+    myTime.setPeriod();
     myTime.setHour();
     myTime.print();
     myTime.setMinute();
     myTime.print();
     myTime.setSecond();
     myTime.print();
+    myTime.print_24();
 
     return 0;
 }

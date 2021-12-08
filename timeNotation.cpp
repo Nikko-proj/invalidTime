@@ -1,5 +1,6 @@
 #include "timeNotation.h"
 
+
 void timeNotation::setTime(){
     //prompts user to set the time
 }
@@ -81,16 +82,22 @@ void timeNotation::setPeriod(){
     // prototyping error handling
     try
     {
-        string *tempPeriod = new string;
-        cout << "Set AM or PM: ";
-        cin >> *tempPeriod;
-        if(*tempPeriod != "AM" || *tempPeriod != "PM")
-            throw *tempPeriod;
+        string tempPeriod = " ";
+      
+        cout << "Enter AM or PM: ";
+        //std::getline(cin, tempPeriod);
+        cin >> tempPeriod;
+        if(tempPeriod == "AM")
+            period = tempPeriod;
+        else if(tempPeriod == "PM")
+            period = tempPeriod;
         else
-            period = *tempPeriod;
-        delete tempPeriod;
+            throw tempPeriod;
+
+       
+        
     }
-    catch(string *e)
+    catch(string e)
     {
         cout << "Must enter a valid period!\n";
     }
@@ -126,4 +133,21 @@ void timeNotation::print(){
         cout << "0" << getSecond() << " " << getPeriod() << endl;
     else
         cout << getSecond() << " " << getPeriod() << endl;
+}
+
+void timeNotation::print_24(){
+    cout << "Printing in 24-HR format\n";
+    if(getPeriod() == "PM" && getHour() < 12){
+        cout << getHour() + 12 << ":";
+    }
+    else if(getPeriod() == "PM" && getHour() == 12)
+        cout << "0" << getHour() - 12 << ":";
+    if(getMinute() < 10) //  if less than 10, print out extra 0
+        cout << "0" << getMinute() << ":";
+    else
+        cout << getMinute() << ":";
+    if(getSecond() < 10) //  if less than 10, print out extra 0
+        cout << "0" << getSecond() << endl;
+    else
+        cout << getSecond() << endl;
 }
